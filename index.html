@@ -4,8 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css" class="css" />
   </head>
   <body>
-    const myLibrary = [];
+    <main>
+      <div class="add-book-container">
+        <button class="add-book-button">Add Book</button>
+        <dialog class="add-book-dialog">
+          <form action="">
+            <input type="text" placeholder="Title" />
+            <input type="text" placeholder="Author" />
+            <input type="number" placeholder="Pages" />
+            <div class="checkbox-container">
+              <input type="checkbox" id="read" />
+              <label for="read">Read</label>
+            </div>
+            <button class="add-book">Add Book</button>
+          </form>
+          <button class="cancel">Cancel</button>
+        </dialog>
+      </div>
+      <div class="books-container"></div>
+    </main>
+    <script src="app.js"></script>
   </body>
 </html>

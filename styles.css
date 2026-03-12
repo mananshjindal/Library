@@ -1,0 +1,23 @@
+.books-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.book-card {
+  background-color: gray;
+}
+
+.add-book-dialog form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* .add-book-dialog input {
+  width: 100%;
+} */
+.checkbox-container {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
