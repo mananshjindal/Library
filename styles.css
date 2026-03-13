@@ -5,6 +5,7 @@
 }
 .book-card {
   background-color: gray;
+  width: 160px;
 }
 
 .add-book-dialog form {

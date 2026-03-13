@@ -3,6 +3,7 @@ const books = document.querySelector(".books-container");
 const btn = document.querySelector(".add-book-button");
 const dialog = document.querySelector(".add-book-dialog");
 const btn_cancel = document.querySelector(".cancel");
+const form = document.querySelector("form");
 
 function Book(title, author, noOfPages, read) {
   this.title = title;
@@ -12,7 +13,7 @@ function Book(title, author, noOfPages, read) {
   this.id = crypto.randomUUID();
   this.info = function () {
     const readStatus = this.hasRead ? "read" : "has not read";
-    return `${this.title} by ${this.author}, ${this.noOfPages}, ${this.readStatus}`;
+    return `${this.title} by ${this.author}, ${this.noOfPages}, ${readStatus}`;
   };
 }
 
@@ -22,6 +23,7 @@ function addBooksToLibrary(title, author, noOfPages, read) {
 }
 
 function displayBooks() {
+  books.innerHTML = "";
   for (let item of myLibrary) {
     let div = document.createElement("div");
     div.classList = "book-card";
@@ -32,11 +34,25 @@ function displayBooks() {
     p_title.textContent = item.title;
     p_author.textContent = item.author;
     p_noOfPages.textContent = item.noOfPages;
-    p_hasRead.textContent = item.hasRead ? "Read" : "Not Read";
+    p_hasRead.textContent = item.hasRead ? "read" : "has not read";
     div.append(p_title, p_author, p_noOfPages, p_hasRead);
     books.append(div);
   }
 }
+
+// submit button handling
+form.addEventListener("submit", (e) => {
+  addBooksToLibrary(
+    e.target.querySelector("#title").value,
+    e.target.querySelector("#author").value,
+    e.target.querySelector("#pages").value,
+    e.target.querySelector("#read").checked,
+  );
+  displayBooks();
+  dialog.close();
+  form.reset();
+  e.preventDefault();
+});
 
 btn.addEventListener("click", () => {
   dialog.showModal();
