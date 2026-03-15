@@ -31,6 +31,8 @@ function displayBooks() {
     let p_author = document.createElement("p");
     let p_noOfPages = document.createElement("p");
     let p_hasRead = document.createElement("p");
+    p_hasRead.classList.add("read-status");
+    div.dataset.id = item.id;
     p_title.textContent = item.title;
     p_author.textContent = item.author;
     p_noOfPages.textContent = item.noOfPages;
@@ -54,6 +56,15 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
 });
 
+// read toggle
+books.addEventListener("click", (e) => {
+  if (!e.target.classList.contains("read-status")) return;
+  const card = e.target.closest(".book-card");
+  const id = card.dataset.id;
+  const book = myLibrary.find((b) => b.id === id);
+  book.hasRead = !book.hasRead;
+  displayBooks();
+});
 btn.addEventListener("click", () => {
   dialog.showModal();
 });
@@ -61,7 +72,6 @@ btn.addEventListener("click", () => {
 btn_cancel.addEventListener("click", () => {
   dialog.close();
 });
-
 // Code to close the dialog when user clicks on webpage
 dialog.addEventListener("click", (e) => {
   const dialogDimensions = dialog.getBoundingClientRect();
