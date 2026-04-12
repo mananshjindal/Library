@@ -7,18 +7,45 @@
     <link rel="stylesheet" href="styles.css" class="css" />
   </head>
   <body>
+    <header>
+      <h1>Library</h1>
+    </header>
     <main>
       <!-- Add Button -->
       <div class="add-book-container">
         <button class="add-book-button">Add Book</button>
         <dialog class="add-book-dialog">
           <form>
-            <input id="title" name="title" type="text" placeholder="Title" />
-            <input id="author" name="author" type="text" placeholder="Author" />
-            <input id="pages" name="pages" type="number" placeholder="Pages" />
+            <input
+              id="title"
+              name="title"
+              type="text"
+              placeholder="Title"
+              required
+            />
+            <input
+              id="author"
+              name="author"
+              type="text"
+              placeholder="Author"
+              required
+            />
+            <input
+              id="pages"
+              name="pages"
+              type="number"
+              placeholder="Pages"
+              required
+            />
             <div class="checkbox-container">
-              <input name="read" type="checkbox" id="read" value="true" />
-              <label for="read">Read</label>
+              <input
+                name="read"
+                type="checkbox"
+                id="read"
+                value="true"
+                checked
+              />
+              <label for="read">Have you read this?</label>
             </div>
             <button type="submit" class="add-book">Add Book</button>
           </form>
