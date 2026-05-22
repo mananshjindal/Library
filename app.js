@@ -23,18 +23,27 @@ function displayBooks(item) {
   let div = document.createElement("div");
   div.classList.add("book-card");
   let p_title = document.createElement("p");
+  p_title.classList.add("title");
   let p_author = document.createElement("p");
+  p_author.classList.add("author");
   let p_noOfPages = document.createElement("p");
+  p_noOfPages.classList.add("pages");
   let p_hasRead = document.createElement("p");
+  p_hasRead.classList.add("read-status");
   const btn_remove = document.createElement("button");
   btn_remove.textContent = "Remove";
   btn_remove.classList.add("remove");
-  p_hasRead.classList.add("read-status");
   div.dataset.id = item.id;
   p_title.textContent = item.title;
   p_author.textContent = item.author;
-  p_noOfPages.textContent = item.noOfPages;
-  p_hasRead.textContent = item.hasRead ? "read" : "has not read";
+  p_noOfPages.textContent = item.noOfPages + " " + "pages";
+  if (item.hasRead) {
+    p_hasRead.textContent = "read";
+    p_hasRead.classList.add("read");
+  } else {
+    p_hasRead.textContent = "not read";
+    p_hasRead.classList.add("notRead");
+  }
   div.append(p_title, p_author, p_noOfPages, p_hasRead, btn_remove);
   books.append(div);
 }
@@ -69,7 +78,15 @@ books.addEventListener("click", (e) => {
     const id = card.dataset.id;
     const book = myLibrary.find((b) => b.id === id);
     book.hasRead = !book.hasRead;
-    e.target.textContent = book.hasRead ? "read" : "has not read";
+    if (book.hasRead) {
+      e.target.textContent = "read";
+      e.target.classList.add("read");
+      e.target.classList.remove("notRead");
+    } else {
+      e.target.textContent = "not read";
+      e.target.classList.add("notRead");
+      e.target.classList.remove("read");
+    }
   }
   //remove book
   if (e.target.classList.contains("remove")) {
